@@ -21,7 +21,7 @@ public class Responder
     public Responder()
     {
         gen = new Random();
-        responses = new ArrayList<>();
+        response = new HashMap<String, String>();
         fillResponseMap();
     }
 
@@ -30,16 +30,14 @@ public class Responder
      * 
      * @return  A string that should be displayed as the response
      */
-    public String generateResponse(HashSet<String> word)
-    {
-        for("each word in the question"){
-            if("code to check if the word is in the responses"){
-                return response.get(word);
-            }
-            else{
-                generateGenericResponse();
-            }
-        }   
+    public String generateResponse(String input)
+    {       
+        if(response.containsKey(input)){
+            return response.get(input);
+        }
+        else{
+            return "I don't know";
+        }      
     }
 
     /**
@@ -81,9 +79,9 @@ public class Responder
         response.put("power", "Try turning it off and turning it back on again");
     }
     
-    public void generateGenericResponse()
+    public String generateGenericResponse()
     {
-        return String("I don't know");
+        return "I don't know";
     }
 }
 

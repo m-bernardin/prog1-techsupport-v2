@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=PhoneBook
+comment0.text=\r\n\ q24\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=PhoneBook()
+comment2.params=name\ number
+comment2.target=void\ enterNumber(java.lang.String,\ java.lang.String)
+comment3.params=name
+comment3.target=void\ lookupNumber(java.lang.String)
+numComments=4
