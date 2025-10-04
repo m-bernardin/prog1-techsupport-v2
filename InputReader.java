@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * InputReader reads typed text input from the standard text terminal. 
@@ -11,13 +11,16 @@ import java.util.Scanner;
 public class InputReader
 {
     private Scanner reader;
+    private ArrayList input;
+    private boolean reading;
 
     /**
      * Create a new InputReader that reads text from the text terminal.
      */
     public InputReader()
     {
-        reader = new Scanner(System.in);
+        reader = new Scanner(System.in).useDelimiter(" ");
+        input = new ArrayList();
     }
 
     /**
@@ -26,12 +29,27 @@ public class InputReader
      *
      * @return  A String typed by the user.
      */
-    public String getInput()
+    public ArrayList getInput()
     {
         // print prompt
-        System.out.print("> ");         
-        String inputLine = reader.nextLine();
-
-        return inputLine;
+        System.out.println(reader.delimiter());
+        System.out.print("> ");
+        reading=true;
+        while(reading){
+            input.clear();
+                if(reader.hasNext()){
+                                
+                    String inputWord = reader.next();
+                    input.add(inputWord);
+            
+            }
+            System.out.println(input.size());
+            for(int i=0; i<input.size();++i){
+                System.out.println(input.get(i));
+            }
+            reading = false;
+        }
+        reading=true;
+        return input;
     }
 }

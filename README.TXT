@@ -35,5 +35,7 @@ q30. containsKey(object key)
      return containsKey("John Doe");
 q31. returns null
 q32. keySet()
-q34. a HashSet isnt ordered, and cant contains duplicates, where an ArrayList is both
-q35. 
+q34. a HashSet isnt ordered, and cant contains duplicates, whereas an ArrayList is and can
+q35. an ArrayList returns an object of any type, whereas a HashSet will return a String (an object) or an integer
+q36. no as a String stores spaces like any other character and the reader trims them all away anyway
+q37. i know the lab is about hashsets, hashmaps, and the like, but it was refusiong to work with a hashset so it implemented an arraylist
