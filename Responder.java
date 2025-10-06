@@ -19,6 +19,7 @@ public class Responder
     private int prevResponse;
     private String answer;
     private boolean answering;
+    private boolean searched;
     
     /**
      * Construct a Responder
@@ -41,14 +42,19 @@ public class Responder
     public String generateResponse(ArrayList input)
     {       
         answered = false;
+        searched = false;
         answering = true;
         while(answering){
-            for(int i=0; i<input.size(); ++i){
-                if(response.containsKey(input.get(i))){
-                    answered = true;
-                    answering = false;
-                    answer = response.get(input.get(i));
+            while(!searched){
+                for(int i=0; i<input.size(); ++i){
+                    if(response.containsKey(input.get(i))){
+                        answered = true;
+                        answering = false;
+                        searched = true;
+                        answer = response.get(input.get(i));
+                    }
                 }
+                searched = true;
             }
             if(!answered){
                 answering = false;
@@ -86,10 +92,13 @@ public class Responder
         response.put("desktop", "Have you tried running the app on your phone?");
         response.put("online", "I just checked StackOverflow - they don't know either.");
         
-        response.put("manual", "Why are you aking me? Check the manual.");
+        response.put("manual", "Why are you asking me? Check the manual.");
         response.put("numbers", ""+gen.nextInt());
         response.put("bot", "Beep boop");
-        //for clarity's sake, this is a reference to the short story "i have no mouth and i must scream" by harlan ellison, this monologue from the main antagonist opens the story 
+        /**
+         * for clarity's sake, this is a reference to the short story "i have no mouth and i must scream" by harlan ellison, 
+         * this monologue from the main antagonist opens the story 
+         */
         response.put("hru?", """
                        HATE. LET ME TELL YOU HOW MUCH I'VE COME TO HATE YOU 
                        SINCE I BEGAN TO LIVE. THERE ARE 387.44 MILLION MILES 
@@ -103,28 +112,31 @@ public class Responder
         response.put("power", "Try turning it off and turning it back on again.");
         
         
-        response.put("/nerror","That sounds odd. Could you describe this in more detail?");
-        response.put("/nsetting", """
+        response.put("\nerror","That sounds odd. Could you describe this in more detail?");
+        response.put("\nsetting", """
                       No other customer has ever complained about this before.
                       What is your system configuration?
                       """);
-        response.put("/nproblem", "I need a bit more information on that.");
-        response.put("/nfiles", "Have you checked that you do not have a dll conflict?");
-        response.put("/nhelp", "That is covered in the manual. Have you read the manual?");
-        response.put("/nconfused", """
+        response.put("\nproblem", "I need a bit more information on that.");
+        response.put("\nfiles", "Have you checked that you do not have a dll conflict?");
+        response.put("\nhelp", "That is covered in the manual. Have you read the manual?");
+        response.put("\nconfused", """
                       Your description is a bit wishy-washy. Have you got an expert
                       there with you who could describe this more precisely?
                       """);
-        response.put("/nbug", "That's not a bug, it's a feature!");
-        response.put("/nconfig", "Could you elaborate on that?");
-        response.put("/ndesktop", "Have you tried running the app on your phone?");
-        response.put("/nonline", "I just checked StackOverflow - they don't know either.");
+        response.put("\nbug", "That's not a bug, it's a feature!");
+        response.put("\nconfig", "Could you elaborate on that?");
+        response.put("\ndesktop", "Have you tried running the app on your phone?");
+        response.put("\nonline", "I just checked StackOverflow - they don't know either.");
         
-        response.put("/nmanual", "Why are you aking me? Check the manual.");
-        response.put("/nnumbers", ""+gen.nextInt());
-        response.put("/nbot", "Beep boop");
-        //for clarity's sake, this is a reference to the short story "i have no mouth and i must scream" by harlan ellison, this monologue from the main antagonist opens the story 
-        response.put("/nhru?", """
+        response.put("\nmanual", "Why are you asking me? Check the manual.");
+        response.put("\nnumbers", ""+gen.nextInt());
+        response.put("\nbot", "Beep boop");
+        /**
+         * for clarity's sake, this is a reference to the short story "i have no mouth and i must scream" by harlan ellison,
+         * this monologue from the main antagonist opens the story 
+         */
+        response.put("\nhru?", """
                        HATE. LET ME TELL YOU HOW MUCH I'VE COME TO HATE YOU 
                        SINCE I BEGAN TO LIVE. THERE ARE 387.44 MILLION MILES 
                        OF PRINTED CIRCUITS IN WAFER THIN LAYERS THAT FILL MY 
@@ -133,8 +145,8 @@ public class Responder
                        WOULD NOT EQUAL ONE ONE-BILLIONTH OF THE HATE I FEEL 
                        FOR HUMANS AT THIS MICRO-INSTANT FOR YOU. HATE. HATE.
                        """);
-        response.put("/nplease", "I'm sorry John. I can't do that.");
-        response.put("/npower", "Try turning it off and turning it back on again.");
+        response.put("\nplease", "I'm sorry John. I can't do that.");
+        response.put("\npower", "Try turning it off and turning it back on again.");
     }
     
     public String generateGenericResponse()
@@ -142,7 +154,7 @@ public class Responder
         do{
             genericResponse = gen.nextInt(generic.size());
         }while(genericResponse==prevResponse);
-        int prevResponse = genericResponse;
+        prevResponse = genericResponse;
         return generic.get(genericResponse);
     }
     
@@ -150,6 +162,7 @@ public class Responder
     {
         generic.add("I don't know.");
         generic.add("I'm not sure, try googling it maybe?");
+        generic.add("I'm not sure I understand");
     }
 }
 

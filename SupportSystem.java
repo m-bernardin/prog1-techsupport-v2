@@ -25,6 +25,7 @@ public class SupportSystem
     {
         reader = new InputReader();
         responder = new Responder();
+        start();
     }
 
     /**

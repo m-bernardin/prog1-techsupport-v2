@@ -31,25 +31,29 @@ public class InputReader
      */
     public ArrayList getInput()
     {
-        // print prompt
-        System.out.println(reader.delimiter());
+        // debug System.out.println(reader.delimiter());
         System.out.print("> ");
         reading=true;
         while(reading){
             input.clear();
-                if(reader.hasNext()){
-                                
+                if(reader.hasNext()){                                
                     String inputWord = reader.next();
-                    input.add(inputWord);
-            
+                    input.add(inputWord);           
             }
-            System.out.println(input.size());
-            for(int i=0; i<input.size();++i){
-                System.out.println(input.get(i));
-            }
+            //debug System.out.println(input.size());
+            //debug for(int i=0; i<input.size();++i){
+            //debug    System.out.println(input.get(i));
+            //debug }
             reading = false;
         }
         reading=true;
         return input;
     }
+    
+    //public HashSet<String> getInputv2()
+    //{
+       // System.out.print("> ");
+       // String[] inputString = reader.nextLine().split("[s\\.]");
+       // return inputString;
+    //}
 }
