@@ -20,6 +20,7 @@ public class Responder
     private String answer;
     private boolean answering;
     private boolean searched;
+    private HashMap<String, String> genericPlus;
     
     /**
      * Construct a Responder
@@ -29,8 +30,10 @@ public class Responder
         gen = new Random();
         response = new HashMap<String, String>();
         generic = new ArrayList<String>();
+        genericPlus = new HashMap<String, String>();
         fillResponseMap();
         populateGenericResponses();
+        populateBetterGenerics();
         prevResponse=-1;
     }
 
@@ -74,6 +77,11 @@ public class Responder
         for(String word : input){
             if(response.containsKey(word)){
                 return response.get(word);
+            }
+        }
+        for(String word2 : input){
+            if(genericPlus.containsKey(word2)){
+                return genericPlus.get(word2);
             }
         }
         return generateGenericResponse();
@@ -173,6 +181,13 @@ public class Responder
         generic.add("I don't know.");
         generic.add("I'm not sure, try googling it maybe?");
         generic.add("I'm not sure I understand");
+    }
+    
+    private void populateBetterGenerics()
+    {
+        genericPlus.put("why", "Because computers are dumb.");
+        genericPlus.put("who","Your administrator might be able to help with that.");
+        genericPlus.put("how","Check the help page maybe?");
     }
 }
 
