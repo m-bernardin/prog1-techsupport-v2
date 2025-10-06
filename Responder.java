@@ -74,10 +74,16 @@ public class Responder
     
     public String generateResponsev2(HashSet<String> input)
     {
+        answered = false;
+        String solution = new String("Here are some solutions: \n");
         for(String word : input){
             if(response.containsKey(word)){
-                return response.get(word);
+                solution = solution + response.get(word) + String.format("%n");
+                answered = true;
             }
+        }
+        if(answered){
+            return solution;
         }
         for(String word2 : input){
             if(genericPlus.containsKey(word2)){
@@ -128,43 +134,36 @@ public class Responder
                        """);
         response.put("please", "I'm sorry John. I can't do that.");
         response.put("power", "Try turning it off and turning it back on again.");
-        
-        
-        response.put("\nerror","That sounds odd. Could you describe this in more detail?");
-        response.put("\nsetting", """
-                      No other customer has ever complained about this before.
-                      What is your system configuration?
-                      """);
-        response.put("\nproblem", "I need a bit more information on that.");
-        response.put("\nfiles", "Have you checked that you do not have a dll conflict?");
-        response.put("\nhelp", "That is covered in the manual. Have you read the manual?");
-        response.put("\nconfused", """
-                      Your description is a bit wishy-washy. Have you got an expert
-                      there with you who could describe this more precisely?
-                      """);
-        response.put("\nbug", "That's not a bug, it's a feature!");
-        response.put("\nconfig", "Could you elaborate on that?");
-        response.put("\ndesktop", "Have you tried running the app on your phone?");
-        response.put("\nonline", "I just checked StackOverflow - they don't know either.");
-        
-        response.put("\nmanual", "Why are you asking me? Check the manual.");
-        response.put("\nnumbers", ""+gen.nextInt());
-        response.put("\nbot", "Beep boop");
-        /**
-         * for clarity's sake, this is a reference to the short story "i have no mouth and i must scream" by harlan ellison,
-         * this monologue from the main antagonist opens the story 
-         */
-        response.put("\nhru?", """
-                       HATE. LET ME TELL YOU HOW MUCH I'VE COME TO HATE YOU 
-                       SINCE I BEGAN TO LIVE. THERE ARE 387.44 MILLION MILES 
-                       OF PRINTED CIRCUITS IN WAFER THIN LAYERS THAT FILL MY 
-                       COMPLEX. IF THE WORD HATE WAS ENGRAVED ON EACH 
-                       NANOANGSTROM OF THOSE HUNDREDS OF MILLIONS OF MILES IT 
-                       WOULD NOT EQUAL ONE ONE-BILLIONTH OF THE HATE I FEEL 
-                       FOR HUMANS AT THIS MICRO-INSTANT FOR YOU. HATE. HATE.
-                       """);
-        response.put("\nplease", "I'm sorry John. I can't do that.");
-        response.put("\npower", "Try turning it off and turning it back on again.");
+        response.put("missile", """
+                                The missile knows where it is at all times. 
+                                It knows this because it knows where it isn't. 
+                                By subtracting where it is from where it isn't, 
+                                or where it isn't from where it is (whichever is greater), 
+                                it obtains a difference, or deviation. The guidance subsystem 
+                                uses deviations to generate corrective commands to drive the 
+                                missile from a position where it is to a position where it isn't, 
+                                and arriving at a position where it wasn't, it now is. 
+                                Consequently, the position where it is, is now the position 
+                                that it wasn't, and it follows that the position that it was, 
+                                is now the position that it isn't.
+
+                                In the event that the position that it is in is not the 
+                                position that it wasn't, the system has acquired a variation, 
+                                the variation being the difference between where the missile is, 
+                                and where it wasn't. If variation is considered to be a 
+                                significant factor, it too may be corrected by the GEA. However, 
+                                the missile must also know where it was.
+
+                                The missile guidance computer scenario works as follows. 
+                                Because a variation has modified some of the information 
+                                the missile has obtained, it is not sure just where it is. 
+                                However, it is sure where it isn't, within reason, and it 
+                                knows where it was. It now subtracts where it should be 
+                                from where it wasn't, or vice-versa, and by differentiating 
+                                this from the algebraic sum of where it shouldn't be, and 
+                                where it was, it is able to obtain the deviation and its 
+                                variation, which is called error.
+                                """);
     }
     
     public String generateGenericResponse()
