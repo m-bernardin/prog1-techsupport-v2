@@ -68,6 +68,16 @@ public class Responder
             return answer;
         }
     }
+    
+    public String generateResponsev2(HashSet<String> input)
+    {
+        for(String word : input){
+            if(response.containsKey(word)){
+                return response.get(word);
+            }
+        }
+        return generateGenericResponse();
+    }
 
     /**
      * Build up a list of default responses from which we can pick one

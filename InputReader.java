@@ -13,6 +13,7 @@ public class InputReader
     private Scanner reader;
     private ArrayList input;
     private boolean reading;
+    private HashSet<String> input2;
 
     /**
      * Create a new InputReader that reads text from the text terminal.
@@ -21,6 +22,7 @@ public class InputReader
     {
         reader = new Scanner(System.in).useDelimiter(" ");
         input = new ArrayList();
+        input2 = new HashSet<>();
     }
 
     /**
@@ -36,10 +38,10 @@ public class InputReader
         reading=true;
         while(reading){
             input.clear();
-                if(reader.hasNext()){                                
+            do{                                
                     String inputWord = reader.next();
                     input.add(inputWord);           
-            }
+            }while(reader.hasNext());
             //debug System.out.println(input.size());
             //debug for(int i=0; i<input.size();++i){
             //debug    System.out.println(input.get(i));
@@ -50,10 +52,15 @@ public class InputReader
         return input;
     }
     
-    //public HashSet<String> getInputv2()
-    //{
-       // System.out.print("> ");
-       // String[] inputString = reader.nextLine().split("[s\\.]");
-       // return inputString;
-    //}
+    public HashSet<String> getInputv2()
+    {
+        System.out.print("> ");
+        input2.clear();
+        String line = reader.nextLine().trim().toLowerCase();
+        Scanner lineScanner = new Scanner(line);
+        while(lineScanner.hasNext()){
+            input2.add(lineScanner.next());
+        }
+        return input2;
+    }
 }

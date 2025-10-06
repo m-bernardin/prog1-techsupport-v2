@@ -40,13 +40,13 @@ public class SupportSystem
         printWelcome();
 
         while(!finished) {
-            ArrayList input = reader.getInput();
+            HashSet input = reader.getInputv2();
             
             if(input.contains("bye")) {
                 finished = true;
             }
             else {
-                String response = responder.generateResponse(input);
+                String response = responder.generateResponsev2(input);
                 System.out.println(response);
             }
         }
