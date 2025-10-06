@@ -27,10 +27,14 @@ public class InputReader
 
     /**
      * Read a line of text from standard input (the text terminal),
-     * and return it as a String.
+     * and return it as an ArrayList.
      *
-     * @return  A String typed by the user.
+     * -DEPRECATED- This method was retained for documentation's sake.
+     * @see getInputv2()
+     * 
+     * @return  A ArrayList composed of the words typed by the user.
      */
+    //q37
     public ArrayList getInput()
     {
         // debug System.out.println(reader.delimiter());
@@ -52,6 +56,13 @@ public class InputReader
         return input;
     }
     
+    /**
+     * Read a line of text from standard input (the text terminal),
+     * and return it as a HashSet.
+     * 
+     * @return A HashSet composed of the words entered by the user.
+     */
+    //q37
     public HashSet<String> getInputv2()
     {
         System.out.print("> ");

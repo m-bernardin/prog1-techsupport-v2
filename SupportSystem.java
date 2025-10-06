@@ -19,7 +19,7 @@ public class SupportSystem
     private Responder responder;
     
     /**
-     * Creates a technical support system.
+     * Creates a technical support system, and starts a dialog with the user.
      */
     public SupportSystem()
     {

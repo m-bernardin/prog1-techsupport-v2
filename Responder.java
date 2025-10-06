@@ -39,9 +39,12 @@ public class Responder
 
     /**
      * Generate a response.
+     * -DEPRECATED- This method was retained for documentation's sake.
      * 
+     * @see generateResponsev2(HashSet<String> input)
      * @return  A string that should be displayed as the response
      */
+    //q37
     public String generateResponse(ArrayList input)
     {       
         answered = false;
@@ -72,12 +75,19 @@ public class Responder
         }
     }
     
+    /**
+     * Generate a response.
+     * 
+     * @return A String to be displayed as an answer.
+     */
+    //37
     public String generateResponsev2(HashSet<String> input)
     {
         answered = false;
         String solution = new String("Here are some solutions: \n");
         for(String word : input){
             if(response.containsKey(word)){
+                //q41
                 solution = solution + response.get(word) + String.format("%n");
                 answered = true;
             }
@@ -85,6 +95,7 @@ public class Responder
         if(answered){
             return solution;
         }
+        //q42
         for(String word2 : input){
             if(genericPlus.containsKey(word2)){
                 return genericPlus.get(word2);
@@ -94,9 +105,9 @@ public class Responder
     }
 
     /**
-     * Build up a list of default responses from which we can pick one
-     * if we don't know what else to say.
+     * Builds the list of basic answers to search through.
      */
+    //q33
     private void fillResponseMap()
     {
         response.put("error","That sounds odd. Could you describe this in more detail?");
@@ -116,6 +127,7 @@ public class Responder
         response.put("desktop", "Have you tried running the app on your phone?");
         response.put("online", "I just checked StackOverflow - they don't know either.");
         
+        //q38
         response.put("manual", "Why are you asking me? Check the manual.");
         response.put("numbers", ""+gen.nextInt());
         response.put("bot", "Beep boop");
@@ -166,8 +178,15 @@ public class Responder
                                 """);
     }
     
+    /**
+     * Generates a generic response, if no other response was found.
+     * 
+     * @return A String to be displayed as the answer.
+     */
+    //q33
     public String generateGenericResponse()
     {
+        //q39
         do{
             genericResponse = gen.nextInt(generic.size());
         }while(genericResponse==prevResponse);
@@ -175,6 +194,10 @@ public class Responder
         return generic.get(genericResponse);
     }
     
+    /**
+     * Builds the list of generic answers to generate from.
+     */
+    //q33
     private void populateGenericResponses()
     {
         generic.add("I don't know.");
@@ -182,6 +205,10 @@ public class Responder
         generic.add("I'm not sure I understand");
     }
     
+    /**
+     * Builds the list of semi-generic responses to search from.
+     */
+    //q42
     private void populateBetterGenerics()
     {
         genericPlus.put("why", "Because computers are dumb.");
