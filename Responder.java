@@ -176,6 +176,13 @@ public class Responder
                                 where it was, it is able to obtain the deviation and its 
                                 variation, which is called error.
                                 """);
+        response.put("glados","I am now flooding the facility with a deadly neurotoxin. (:");
+        response.put("fireOS","""
+                             fireOS devices are known to spontaneously burst into flames. 
+                             Old Jeffy got a little greedy when designing those.
+                             Maybe get a fire extinguisher?
+                             """);
+        response.put("exploded","Oh.. Well that's not normal, how old was the battery?");
     }
     
     /**
